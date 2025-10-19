@@ -2,7 +2,7 @@ package problems
 
 import "strings"
 
-func findWords(words []string) []string {
+func KeyboardRow(words []string) []string {
 	rows := []string{
 		"qwertyuiop",
 		"asdfghjkl",
@@ -25,7 +25,6 @@ func findWords(words []string) []string {
 				break
 			}
 		}
-
 		if valid {
 			result = append(result, word)
 		}
