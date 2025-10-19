@@ -1,26 +1,19 @@
-package main
+package problems
 
-import (
-	"fmt"
-	"strings"
-)
+import "strings"
 
-func main() {
-	words := []string{"Hello", "Alaska", "Dad", "Peace"}
+func findWords(words []string) []string {
 	rows := []string{
 		"qwertyuiop",
 		"asdfghjkl",
 		"zxcvbnm",
 	}
-
-	// map chữ cái → số hàng
 	letterToRow := make(map[rune]int)
 	for i, row := range rows {
 		for _, ch := range row {
 			letterToRow[ch] = i
 		}
 	}
-
 	var result []string
 	for _, word := range words {
 		lower := strings.ToLower(word)
@@ -32,10 +25,11 @@ func main() {
 				break
 			}
 		}
+
 		if valid {
 			result = append(result, word)
 		}
 	}
 
-	fmt.Println(result)
+	return result
 }
