@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello world")
-	problems.RomanToInt("s = \"MCMXCIV\"")
+	sum := problems.RomanToInt("s = \"CD\"")
+	fmt.Println(sum)
 }
