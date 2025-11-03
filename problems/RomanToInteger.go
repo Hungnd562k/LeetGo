@@ -1,59 +1,42 @@
 package problems
 
 func RomanToInt(s string) int {
-	// strRoman := ""
-	// quoteChar := "\""
-	// firstIndex := strings.Index(s, quoteChar)
-	// lastIndex := strings.LastIndex(s, quoteChar)
-
-	// if firstIndex != -1 && lastIndex != -1 && firstIndex < lastIndex {
-	// 	strRoman = s[firstIndex+1 : lastIndex]
-	// }
-	// fmt.Println(strRoman)
 	m := MakeMapRunes()
-	// fmt.Println(m)
 
 	arrChar := []rune(s)
 	var arrVal []int
+
 	if len(arrChar) == 1 {
-		arrVal = append(arrVal, m[string(arrChar[0])])
+		v, ok := m[string(arrChar[0])]
+		if ok {
+			arrVal = append(arrVal, v)
+		}
 	} else if len(arrChar) == 2 {
-		a := m[string(arrChar[0])]
-		b := m[string(arrChar[1])]
-		if a < b {
-			tmp := string(arrChar[0]) + string(arrChar[1])
-			v, ok := m[tmp]
-			if ok {
-				arrVal = append(arrVal, v)
-			} else {
-				arrVal = append(arrVal, m[string(arrChar[0])])
-				arrVal = append(arrVal, m[string(arrChar[1])])
-			}
+		v, ok := m[string(arrChar[0])+string(arrChar[1])]
+		if ok {
+			arrVal = append(arrVal, v)
+		} else {
+			arrVal = append(arrVal, m[string(arrChar[0])])
+			arrVal = append(arrVal, m[string(arrChar[1])])
 		}
 	} else {
-		v := m[string(arrChar[0])]
-		arrVal = append(arrVal, v)
-		for i := 1; i < len(s); i++ {
-			if i != len(s)-1 {
-				a := m[string(arrChar[i])]
-				b := m[string(arrChar[i+1])]
-				if a < b {
-					tmp := string(arrChar[i]) + string(arrChar[i+1])
-					v1, ok := m[tmp]
-					if ok {
-						arrVal = append(arrVal, v1)
-						i++
-					} else {
-						v = m[string(arrChar[i])]
-						arrVal = append(arrVal, v)
-					}
-				} else {
-					v = m[string(arrChar[i])]
+		for i := 0; i < len(arrChar); i++ {
+			if i == len(arrChar)-1 {
+				arrVal = append(arrVal, m[string(arrChar[i])])
+				break
+			}
+			a := m[string(arrChar[i])]
+			b := m[string(arrChar[i+1])]
+			if a < b {
+				v, ok := m[string(arrChar[i])+string(arrChar[i+1])]
+				if ok {
 					arrVal = append(arrVal, v)
+					i++
+				} else {
+					arrVal = append(arrVal, m[string(arrChar[i])])
 				}
 			} else {
-				v = m[string(arrChar[i])]
-				arrVal = append(arrVal, v)
+				arrVal = append(arrVal, m[string(arrChar[i])])
 			}
 		}
 	}

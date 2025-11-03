@@ -12,15 +12,16 @@ type testCase struct {
 func TestRomanToInteger(t *testing.T) {
 	// Danh sách các trường hợp kiểm thử
 	tests := []testCase{
-		{"III", 3},          // Trường hợp cơ bản
-		{"LVIII", 58},       // Trường hợp phức tạp hơn (L = 50, V = 5, III = 3)
-		{"MCMXCIV", 1994},   // Trường hợp có quy tắc trừ: M=1000, CM=900, XC=90, IV=4
-		{"IX", 9},           // Quy tắc trừ cơ bản (10 - 1)
-		{"IV", 4},           // Quy tắc trừ cơ bản (5 - 1)
-		{"XL", 40},          // Quy tắc trừ
-		{"XC", 90},          // Quy tắc trừ
-		{"CD", 400},         // Quy tắc trừ
-		{"CM", 900},         // Quy tắc trừ
+		{"III", 3},        // Trường hợp cơ bản
+		{"LVIII", 58},     // Trường hợp phức tạp hơn (L = 50, V = 5, III = 3)
+		{"MCMXCIV", 1994}, // Trường hợp có quy tắc trừ: M=1000, CM=900, XC=90, IV=4
+		{"IX", 9},         // Quy tắc trừ cơ bản (10 - 1)
+		{"IV", 4},         // Quy tắc trừ cơ bản (5 - 1)
+		{"XL", 40},        // Quy tắc trừ
+		{"XC", 90},        // Quy tắc trừ
+		{"CD", 400},       // Quy tắc trừ
+		{"CM", 900},       // Quy tắc trừ
+		{"V", 5},
 		{"DCCCLXXXIV", 884}, // Trường hợp dài
 		{"MMXXV", 2025},     // Trường hợp số lớn
 		{"CMLII", 952},
